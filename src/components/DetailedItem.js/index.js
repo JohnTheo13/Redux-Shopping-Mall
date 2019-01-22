@@ -2,14 +2,18 @@
 import React from 'react';
 import Icon from '../Icon';
 import StyledDetailed from './StyledDetailed';
-import { Item } from '../../types';
+import { type Item } from '../../types';
+
+type Detailed = {
+  addToCart: Function
+} & Item
 
 const DetailedItem = ({
   description,
   price,
   addToCart,
-  stock: { remaining }, 
-}: Item) => (
+  stock: { remaining },
+}: Detailed) => (
   <StyledDetailed>
     <p>{description}</p>
     <div>

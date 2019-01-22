@@ -9,12 +9,12 @@ import ListItem from '../../components/ListItem';
 import Icon from '../../components/Icon';
 import Cart from '../../components/Cart';
 import { outOfStock } from './helpers';
-import { ExtendedItem } from '../../types';
+import { type ExtendedItem } from '../../types';
 
 type Props = {
   startFetchingItems: Function,
-  itemsFetched: boolean,
-  failedFetch: boolean,
+  itemsFetched: Function,
+  failedFetch: Function,
   clear: Function,
   updateCart: Function,
   items: {

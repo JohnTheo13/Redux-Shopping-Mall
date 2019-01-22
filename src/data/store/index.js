@@ -1,22 +1,19 @@
-/* eslint-disable */
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
-import thunk from 'redux-thunk'
-import items from '../reducers/itemsReducer'
+import {
+  createStore,
+  combineReducers,
+  applyMiddleware,
+  compose,
+} from 'redux';
+import thunk from 'redux-thunk';
+import items from '../reducers/itemsReducer';
 
-const reducers = combineReducers({
-  items
-});
+const reducers = combineReducers({ items });
 
-const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__
-  ? window.__REDUX_DEVTOOLS_EXTENSION__()
-  : {};
+const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f; // eslint-disable-line
 
 const store = createStore(
   reducers,
-  compose(
-    applyMiddleware(thunk),
-    reduxDevTools
-  )
-)
+  compose(applyMiddleware(thunk), reduxDevTools),
+);
 
-export default store
+export default store;

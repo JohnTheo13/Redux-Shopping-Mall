@@ -4,7 +4,7 @@ import React from 'react';
 const getTotal = (total: number, num: number): number => total + num;
 
 const expected = (price: number): string => {
-  const [integer, decimal] = price.toString().split('.'),
+  const [integer, decimal] = price.toFixed(2).toString().split('.'),
     { length } = integer;
   // For now we assume it wont be more
   if (length > 3) {
@@ -13,8 +13,8 @@ const expected = (price: number): string => {
   return price.toString();
 };
 
-const Total = ({ prices }: Array<number>) => {
-  const total = expected(prices.reduce(getTotal).toFixed(2));
+const Total = ({ prices }: { prices: Array<number> }) => {
+  const total = expected(prices.reduce(getTotal));
   return (
     <div>
       <span><strong>Total:</strong></span>

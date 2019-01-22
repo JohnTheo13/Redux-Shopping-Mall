@@ -4,7 +4,7 @@ import StyledItem from './StyledItem';
 import Modal from '../Modal';
 import Icon from '../Icon';
 import DetailedItem from '../DetailedItem.js';
-import { ExtendedItem } from '../../types';
+import { type ExtendedItem } from '../../types';
 
 type ItemType = {
   updateCart: Function
@@ -15,7 +15,6 @@ const ListItem = ({
   image,
   title,
   updateCart,
-  _id,
   ...props
 }: ItemType) => {
   const [show, toggle] = useState(false);
@@ -25,13 +24,13 @@ const ListItem = ({
       <div onClick={() => toggle(!show)} onKeyDown={() => null}>{title}</div>
       <div>{price}</div>
       <img alt="thumb" src={image} />
-      <Icon onClick={() => updateCart(_id)} name="add_shopping_cart" />
+      <Icon onClick={() => updateCart(props._id)} name="add_shopping_cart" />
       <Modal
         show={show}
         close={() => toggle(!show)}
         header={title}
       >
-        <DetailedItem addToCart={() => updateCart(_id)} {...props} price={price} />
+        <DetailedItem addToCart={() => updateCart(props._id)} {...props} price={price} />
       </Modal>
     </StyledItem>
   );

@@ -1,5 +1,5 @@
 import * as actions from '../actions/';
-import * as types from '../actionTypes'
+import * as types from '../actionTypes';
 
 describe('actions', () => {
   it('should create an action that fetch failed', () => {
@@ -8,18 +8,7 @@ describe('actions', () => {
   });
 
   it('should a CLEAR action', () => {
-    const type = 'COUNTRY';
-    const expectedAction = { type: types.CLEAR_[type] };
-    expect(actions.clear(type)).toEqual(expectedAction);
-  });
-
-  it('should create an active item change action', () => {
-    const name = 'Batavia';
-    const expectedAction = {
-      type: types.ACTIVE_ITEM_UPDATED,
-      payload: name
-    };
-    expect(actions.activeChanged(name)).toEqual(expectedAction);
+    const expectedAction = { type: types.CLEAR_CART };
+    expect(actions.clear()).toEqual(expectedAction);
   });
 });
-

@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import sinon from 'sinon';
-import Icon from '../Icon';
+import Icon from '../index';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -12,7 +12,7 @@ describe('Icon components-test', () => {
     // Note: These kind of test are redundant if we are properly type-checking
     // Render an Icon with ADD
     const wrapper = shallow(<Icon name={ADD} />);
-    expect(wrapper.props().className).toMatch(ADD);
+    expect(wrapper.dive().props().children).toEqual(ADD);
   });
 
   test('Icon test if onClick works', () => {

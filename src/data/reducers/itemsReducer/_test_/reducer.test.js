@@ -7,22 +7,15 @@ describe('items reducer', () => {
   });
 
   it('should handle ITEMS_FETCHED', () => {
-    const list = [{a: 1},{b: 2},{c: [1,2,4]}],
-    payload = {
-      list, 
-      activeList: list,
-      countries: ['spain', 'canada', 'netherlands']
-    };
+    const list = [{ a: 1 }, { b: 2 }, { c: [1, 2, 4] }],
+      payload = { list };
     expect(
-      reducer(initialState, {
-        type: types.ITEMS_FETCHED,
-        payload
-      })
+      reducer(initialState, { type: types.ITEMS_FETCHED, payload })
     ).toEqual({
-        ...initialState,
-        fetched: true,
-        fetching: false,
-        ...payload
+      ...initialState,
+      fetched: true,
+      fetching: false,
+      ...payload,
     });
   });
-})
+});

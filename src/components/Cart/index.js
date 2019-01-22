@@ -2,14 +2,14 @@
 import React from 'react';
 import Total from './Total';
 import StyledCart from './StyledCart';
-import { ExtendedItem } from '../../types';
+import { type ExtendedItem } from '../../types';
 
 /**
  * Convert prices to Numbers we can opperate over
  * @param {*} prices
  */
 
-const Cart = ({ cart }: Array<ExtendedItem>) => (
+const Cart = ({ cart }: { cart: Array<ExtendedItem> }) => (
   <StyledCart>
     <div>
       <div><strong>Items</strong></div>
