@@ -32,8 +32,8 @@ Our directories like this:
 ```
 src
 ├── components
-|    ├── UI
-|    :   └── _test_
+|    ├── Icon
+|    :    └── _test_
 |
 ├── config   
 ├── containers
@@ -56,11 +56,6 @@ some top-level application bootstrapping stuff at the root, like ├── └�
 
 ```
 src
-├── api
-|    └── index.js
-├── components
-|    └── UI
-|         └── index.js 
 ├── config
 |    └── index.js
 ├── containers
