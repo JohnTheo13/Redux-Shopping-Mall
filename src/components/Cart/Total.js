@@ -12,7 +12,7 @@ const expected = price => {
 };
 
 const Total = ({ prices }) => {
-  const total = expected(prices.reduce(getTotal));
+  const total = expected(prices.reduce(getTotal).toFixed(2));
   return (
     <div>
       <span><strong>Total:</strong></span>
