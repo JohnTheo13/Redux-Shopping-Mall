@@ -1,13 +1,25 @@
-import React from 'react';
+// @flow
+import React, { type Element } from 'react';
 import ModalWraper from './Styled';
 
-const modal = ({
+type ModalType = {
+  show: boolean,
+  close: Function,
+  next?: {
+    click: Function,
+    title: string
+  },
+  header?: string,
+  children: Element<any>
+}
+
+const Modal = ({
   show,
   close,
   children,
   next,
-  header
-}) => (
+  header,
+}: ModalType) => (
   <ModalWraper show={show}>
     <div>
       <div>
@@ -26,4 +38,4 @@ const modal = ({
 );
 
 
-export default modal;
+export default Modal;

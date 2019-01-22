@@ -1,8 +1,14 @@
+// @flow
 import React, { useState } from 'react';
 import StyledItem from './StyledItem';
 import Modal from '../Modal';
 import Icon from '../Icon';
 import DetailedItem from '../DetailedItem.js';
+import { ExtendedItem } from '../../types';
+
+type ItemType = {
+  updateCart: Function
+} & ExtendedItem
 
 const ListItem = ({
   price,
@@ -10,8 +16,8 @@ const ListItem = ({
   title,
   updateCart,
   _id,
-  ...props,
-}) => {
+  ...props
+}: ItemType) => {
   const [show, toggle] = useState(false);
 
   return (

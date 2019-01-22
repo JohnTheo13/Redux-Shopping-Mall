@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import api from '../../data/requests/api';
@@ -7,10 +8,25 @@ import { mapStateToProps, mapDispatchToProps } from './statePropsDispatch';
 import ListItem from '../../components/ListItem';
 import Icon from '../../components/Icon';
 import Cart from '../../components/Cart';
+import { outOfStock } from './helpers';
+import { ExtendedItem } from '../../types';
 
-const outOfStock = item => item.stock.remaining > 0;
+type Props = {
+  startFetchingItems: Function,
+  itemsFetched: boolean,
+  failedFetch: boolean,
+  clear: Function,
+  updateCart: Function,
+  items: {
+    fetched: boolean,
+    fetching: boolean,
+    failedFetch: boolean,
+    list: Array<ExtendedItem>,
+    cart: Array<ExtendedItem>
+  }
+}
 
-class Home extends Component {
+class Home extends Component<Props, { modalOn: boolean }> {
   constructor(props) {
     super(props);
     this.state = { modalOn: false };
@@ -43,7 +59,14 @@ class Home extends Component {
 
   render() {
     const { modalOn } = this.state,
-      { items: { fetched, list, cart }, updateCart } = this.props;
+      { items: {
+        fetched,
+        list,
+        cart,
+        fetching,
+        failedFetch,
+      },
+      updateCart } = this.props;
     return (
       <div>
         <Header>
@@ -53,6 +76,7 @@ class Home extends Component {
             <span>{cart.length}</span>
           </span>
         </Header>
+        {fetching && <h2>LOADING...</h2>}
         <Modal
           show={modalOn}
           close={this.toggleModal}
@@ -64,7 +88,8 @@ class Home extends Component {
           }
         </Modal>
         {fetched // eslint-disable-next-line
-          && list.filter(outOfStock).map(item => <ListItem key={item._id} {...item} updateCart={updateCart} />)
+          ? list.filter(outOfStock).map(item => <ListItem key={item._id} {...item} updateCart={updateCart} />)
+          : failedFetch && 'Something went wrong'
         }
       </div>
     );

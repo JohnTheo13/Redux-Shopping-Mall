@@ -1,13 +1,15 @@
+// @flow
 import React from 'react';
 import Icon from '../Icon';
 import StyledDetailed from './StyledDetailed';
+import { Item } from '../../types';
 
 const DetailedItem = ({
   description,
   price,
   addToCart,
   stock: { remaining }, 
-}) => (
+}: Item) => (
   <StyledDetailed>
     <p>{description}</p>
     <div>
